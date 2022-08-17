@@ -1,0 +1,20 @@
+name: main
+on:
+  push:
+    branches: ['*']
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        
+      - name: change something
+        run: |
+              cat <<EOF >./password.txt
+              username=admin
+              password=secret
+              EOF
+      - name: Add & Commit
+        uses: EndBug/add-and-commit@v9.0.1
